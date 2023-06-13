@@ -61,8 +61,7 @@ for i, face in enumerate(faces):
     resized_face = cv2.resize(cropped_face, (216, 216))
 
     img=resized_face
-
-# Prepare the image from webcam for commparisons
+    
     imgSmall = cv2.resize(img, (0, 0), None, 0.25, 0.25)  # down-scaling image
     imgSmall = cv2.cvtColor(imgSmall, cv2.COLOR_BGR2RGB)
 
@@ -74,7 +73,7 @@ for i, face in enumerate(faces):
     webCamFaceEncoding = face_recognition.face_encodings(imgSmall,
                                                        webCamFaceLoc)
     studentID = []
-   # Compare the web cam face-encodings with the saved encodings
+   # Compare the test photo face-encodings with the saved encodings
     for faceEncode in webCamFaceEncoding:
         faceMatches = face_recognition.compare_faces(known_EncodingList,
                                                      faceEncode,tolerance)
